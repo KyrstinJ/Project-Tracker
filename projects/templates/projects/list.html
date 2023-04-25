@@ -12,21 +12,22 @@
     <main>
         <div>
             <h1>My Projects</h1>
-            {% for projects in project_list %}
-                {% if projects not in project_list %}
-                <p>You are not assigned to any projects</p>
-                {% else %}
+            {% if project_list|length > 0 %}
             <table>
-                <tr>
-                    <th>Names</th>
-                    <th>Number of tasks</th>
-                </tr>
-                <tr>
-                    <td>{{ projects.name }}</td>
-                </tr>
-                {% endif %}
+                    <tr>
+                        <th>Names</th>
+                        <th>Number of tasks</th>
+                    </tr>
+                    {% for projects in project_list %}
+                    <tr>
+                        <td><a href="{% url 'show_project' projects.id%}">{{ projects.name }}</a></td>
+                        <td>{{ projects.tasks.all|length }}</td>
+                    </tr>
+                    {% endfor %}
+            {% else %}
+                <p> You are not assigned to any projects </p>
             </table>
-            {% endfor %}
+            {% endif %}
         </div>
     </main>
 </body>
