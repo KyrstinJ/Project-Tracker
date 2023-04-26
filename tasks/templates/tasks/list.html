@@ -1,16 +1,14 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Document
+    Document
 {% endblock title %}
-
-
 {% block content %}
     <main>
         <div>
             <h1>My Tasks</h1>
             {% if show_task|length > 0 %}
-            <table>
+                <table>
                     <tr>
                         <th>Names</th>
                         <th>Start date</th>
@@ -18,16 +16,16 @@ Document
                         <th>Is completed</th>
                     </tr>
                     {% for task in show_task %}
-                    <tr>
-                        <td>{{ task.name }}</td>
-                        <td>{{ task.start_date }}</td>
-                        <td>{{ task.due_date }}</td>
-                        <td>{{ task.is_completed|yesno:"yes, no" }}</td>
-                    </tr>
+                        <tr>
+                            <td>{{ task.name }}</td>
+                            <td>{{ task.start_date }}</td>
+                            <td>{{ task.due_date }}</td>
+                            <td>{{ task.is_completed|yesno:"yes, no" }}</td>
+                        </tr>
                     {% endfor %}
-            {% else %}
-                <p> You have no tasks</p>
-            </table>
+                {% else %}
+                    <p>You have no tasks</p>
+                </table>
             {% endif %}
         </div>
     </main>

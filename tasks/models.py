@@ -14,9 +14,7 @@ class Task(models.Model):
     )
     is_completed = models.BooleanField(default=False)
     project = models.ForeignKey(
-        "projects.Project",
-        related_name="tasks",
-        on_delete=models.CASCADE
+        "projects.Project", related_name="tasks", on_delete=models.CASCADE
     )
     assignee = models.ForeignKey(
         User,
