@@ -19,3 +19,12 @@ def create_task(request):
         "form": form
     }
     return render(request, "projects/create.html", context)
+
+
+@login_required
+def show_task(request):
+    tasks = Task.objects.filter(assignee=request.user)
+    context = {
+        "show_task": tasks,
+    }
+    return render(request, "tasks/list.html", context)
