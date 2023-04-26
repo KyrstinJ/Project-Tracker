@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 from tasks.models import Task
 from django.contrib.auth.decorators import login_required
 from tasks.forms import TaskForm
@@ -18,7 +18,7 @@ def create_task(request):
     context = {
         "form": form
     }
-    return render(request, "projects/create.html", context)
+    return render(request, "tasks/create.html", context)
 
 
 @login_required
